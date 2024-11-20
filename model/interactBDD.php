@@ -11,7 +11,7 @@ function getUsers(){
 
     $ligne = $req->fetch(PDO::FETCH_ASSOC);
     while ($ligne) {
-        $user = new User($ligne['id'], $ligne['nom'], $ligne['prenom'], $ligne['email'],);
+        $user = new User($ligne['id'], $ligne['nom'], $ligne['prenom'], $ligne['mail'],);
         array_push($resultat, $user);
         $ligne = $req->fetch(PDO::FETCH_ASSOC);
     }

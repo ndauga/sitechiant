@@ -24,7 +24,10 @@
 include "model/interactBDD.php";
 
 if(isset($_POST["name"])){
-    insertUser($_POST["name"], $_POST["surname"], $_POST["email"] );
+    $testval=insertUser($_POST["name"], $_POST["surname"], $_POST["email"] );
+    if($testval){
+        echo("Envoie réussie");
+    }
 }
 
 
