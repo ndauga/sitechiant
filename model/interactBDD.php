@@ -1,11 +1,12 @@
 <?php
 
 include_once "cnxBDD.php";
+include_once "User.php";
 
 function getUsers(){
     $resultat = array();
     $cnx = connexionPDO();
-    $req = $cnx->prepare("select id, nom, prenom, email from User");
+    $req = $cnx->prepare("select id, nom, prenom, mail from User");
     $req->execute();
 
     $ligne = $req->fetch(PDO::FETCH_ASSOC);
@@ -17,15 +18,16 @@ function getUsers(){
     return $resultat;
 }
 
-function insertUser(int $id, string $name, string $surname, string $email){
+function insertUser(string $name, string $surname, string $email){
     $resultat = false;
 
     try {
         $cnx = connexionPDO();
-        $req = $cnx->prepare("insert into User (pseudo, mail, mdp) values('$id','$name','$surname', '$email');");
+        $req = $cnx->prepare("insert into User (nom, prenom, mail) values('$name','$surname', '$email');");
         $req->execute();
         $resultat = true;
     } catch (Exception $e) {
+        var_dump($e);
         $resultat = false;
     }
     return $resultat;

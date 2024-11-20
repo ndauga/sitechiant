@@ -3,7 +3,7 @@
 //TODO Params connexions
 function connexionPDO() {
     $login = "root";
-    $mdp = "";
+    $mdp = "root";
     $bd = "clientchiant";
     $serveur = "127.0.0.1:3306";
 $rac = dirname(__FILE__); 
@@ -12,8 +12,7 @@ $rac = dirname(__FILE__);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
     } catch (PDOException $e) {
-        $ERRmsg="ERR Connection DB fail";
-        header("Location: view/404.php");
+        return "ERR Connection DB fail";
     }
 }
 ?>
